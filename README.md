@@ -15,33 +15,33 @@ If the module is configured but not used it will suggest to remove it.
 Dump the content of Apache server-info page to a file.
 The server-info page should be dumped only after the site has been used. This imply that all the modules needed are used.
 
-  curl http://localhost/server-info > http_modules_test.txt
-  cat http_modules_test.txt| python find_unused_apache_mod.py
+    curl http://localhost/server-info > http_modules_test.txt
+    cat http_modules_test.txt| python find_unused_apache_mod.py
 
-  1
-  Module name mod_python.c
-  Configuration Phase Participation: 4
-  Request Phase Participation: 11
-  Current Configuration: 3
+    1
+    Module name mod_python.c
+    Configuration Phase Participation: 4
+    Request Phase Participation: 11
+    Current Configuration: 3
 
-  2
-  Module name mod_version.c
-  Configuration Phase Participation: 0
-  Request Phase Participation: 0
-  Current Configuration: 1
+    2
+    Module name mod_version.c
+    Configuration Phase Participation: 0
+    Request Phase Participation: 0
+    Current Configuration: 1
 
-  3
-  Module name mod_proxy_connect.c
-  Configuration Phase Participation: 0
-  Request Phase Participation: 0
-  Current Configuration: 0 
+    3
+    Module name mod_proxy_connect.c
+    Configuration Phase Participation: 0
+    Request Phase Participation: 0
+    Current Configuration: 0
 
-  To remove safely:
-   ['mod_proxy_connect.c']
-  POPPED:  mod_proxy_connect.c
+    To remove safely:
+     ['mod_proxy_connect.c']
+    POPPED:  mod_proxy_connect.c
 
-  To KEEP:  ['mod_python.c', 'mod_version.c', 'mod_proxy_connect.c']
+    To KEEP:  ['mod_python.c', 'mod_version.c', 'mod_proxy_connect.c']
 
 You can test on a real case example with:
 
-  cat http_modules.txt| python find_unused_apache_mod.py
+    cat http_modules.txt| python fi nd_unused_apache_mod.py
