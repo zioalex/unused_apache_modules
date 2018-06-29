@@ -1,0 +1,30 @@
+Module Name: mod_python.c
+Content handlers: yes
+Configuration Phase Participation: Create Directory Config, Merge Directory Configs, Create Server Config, Merge Server Configs
+Request Phase Participation: Process Connection, Post-Read Request, Header Parse, Translate Name, Check Access, Verify User ID, Verify User Access, Check Type, Fixups, Content Handlers, Logging
+Module Directives:
+    PythonAccessHandler - Python access by host address handlers.
+    PythonAuthenHandler - Python authentication handlers.
+    PythonAutoReload - Set to Off if you don't want changed modules to reload.
+    PythonAuthzHandler - Python authorization handlers.
+Current Configuration:
+    In file: /etc/httpd/conf.d/50_pidxs.conf
+       7: <Directory /usr/local/mb_data/ibp>
+      15:   PythonPath "sys.path+['/opt/nokia/pidxs/lib']"
+
+Module Name: mod_version.c
+Content handlers: none
+Configuration Phase Participation: none
+Request Phase Participation: none
+Module Directives:
+    <IfVersion> - a comparison operator, a version (and a delimiter)
+    Test Module Direct
+Current Configuration:
+    test pippo
+
+Module Name: mod_proxy_connect.c
+Content handlers: none
+Configuration Phase Participation: none
+Request Phase Participation: none
+Module Directives: none
+

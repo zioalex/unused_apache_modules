@@ -1,0 +1,841 @@
+Module Name: mod_python.c
+Content handlers: yes
+Configuration Phase Participation: Create Directory Config, Merge Directory Configs, Create Server Config, Merge Server Configs
+Request Phase Participation: Process Connection, Post-Read Request, Header Parse, Translate Name, Check Access, Verify User ID, Verify User Access, Check Type, Fixups, Content Handlers, Logging
+Module Directives:
+    PythonAccessHandler - Python access by host address handlers.
+    PythonAuthenHandler - Python authentication handlers.
+    PythonAutoReload - Set to Off if you don't want changed modules to reload.
+    PythonAuthzHandler - Python authorization handlers.
+    PythonCleanupHandler - Python clean up handlers.
+    PythonConnectionHandler - Python connection handlers.
+    PythonDebug - Send (most) Python error output to the client rather than logfile.
+    PythonEnablePdb - Run handlers in PDB (Python Debugger). Use with -DONE_PROCESS.
+    PythonFixupHandler - Python fixups handlers.
+    PythonHandler - Python request handlers.
+    PythonHeaderParserHandler - Python header parser handlers.
+    PythonImport - Module and interpreter name to be imported at server/child init time.
+    PythonInitHandler - Python request initialization handler.
+    PythonInterpPerDirective - Create subinterpreters per directive.
+    PythonInterpPerDirectory - Create subinterpreters per directory.
+    PythonInterpreter - Forces a specific Python interpreter name to be used here.
+    PythonLogHandler - Python logger handlers.
+    PythonHandlerModule - A Python module containing handlers to be executed.
+    PythonOptimize - Set the equivalent of the -O command-line flag on the interpreter.
+    PythonOption - Useful to pass custom configuration information to scripts.
+    PythonPath - Python path, specified in Python list syntax.
+    PythonPostReadRequestHandler - Python post read-request handlers.
+    PythonTransHandler - Python filename to URI translation handlers.
+    PythonTypeHandler - Python MIME type checker/setter handlers.
+    PythonInputFilter - Python input filter.
+    PythonOutputFilter - Python output filter.
+Current Configuration:
+      17:   PythonDebug On
+        : </Directory>
+
+Module Name: mod_version.c
+Content handlers: none
+Configuration Phase Participation: none
+Request Phase Participation: none
+Module Directives:
+    <IfVersion> - a comparison operator, a version (and a delimiter)
+Current Configuration:
+
+Module Name: mod_cgi.c
+Content handlers: yes
+Configuration Phase Participation: Create Server Config, Merge Server Configs
+Request Phase Participation: Content Handlers
+Module Directives:
+    ScriptLog - the name of a log for script debugging info
+    ScriptLogLength - the maximum length (in bytes) of the script debug log
+    ScriptLogBuffer - the maximum size (in bytes) to record of a POST request
+Current Configuration:
+
+Module Name: mod_disk_cache.c
+Content handlers: none
+Configuration Phase Participation: Create Server Config
+Request Phase Participation: none
+Module Directives:
+    CacheRoot - The directory to store cache files
+    CacheDirLevels - The number of levels of subdirectories in the cache
+    CacheDirLength - The number of characters in subdirectory names
+    CacheMinFileSize - The minimum file size to cache a document
+    CacheMaxFileSize - The maximum file size to cache a document
+Current Configuration:
+
+Module Name: mod_suexec.c
+Content handlers: none
+Configuration Phase Participation: Create Directory Config, Create Server Config
+Request Phase Participation: none
+Module Directives:
+    SuexecUserGroup - User and group for spawned processes
+Current Configuration:
+
+Module Name: mod_cache.c
+Content handlers: none
+Configuration Phase Participation: Create Server Config, Merge Server Configs
+Request Phase Participation: Quick Handler
+Module Directives:
+    CacheEnable - A cache type and partial URL prefix below which caching is enabled
+    CacheDisable - A partial URL prefix below which caching is disabled
+    CacheMaxExpire - The maximum time in seconds to cache a document
+    CacheDefaultExpire - The default time in seconds to cache a document
+    CacheIgnoreNoLastMod - Ignore Responses where there is no Last Modified Header
+    CacheIgnoreCacheControl - Ignore requests from the client for uncached content
+    CacheStorePrivate - Ignore 'Cache-Control: private' and store private content
+    CacheStoreNoStore - Ignore 'Cache-Control: no-store' and store sensitive content
+    CacheIgnoreHeaders - A space separated list of headers that should not be stored by the cache
+    CacheIgnoreQueryString - Ignore query-string when caching
+    CacheIgnoreURLSessionIdentifiers - A space separated list of session identifiers that should be ignored for creating the key of the cached entity.
+    CacheLastModifiedFactor - The factor used to estimate Expires date from LastModified date
+    CacheLock - Enable or disable the thundering herd lock.
+    CacheLockPath - The thundering herd lock path. Defaults to the '/mod_cache-lock' directory in the system temp directory.
+    CacheLockMaxAge - Maximum age of any thundering herd lock.
+Current Configuration:
+
+Module Name: mod_proxy_connect.c
+Content handlers: none
+Configuration Phase Participation: none
+Request Phase Participation: none
+Module Directives: none
+
+Module Name: mod_proxy_ajp.c
+Content handlers: none
+Configuration Phase Participation: none
+Request Phase Participation: none
+Module Directives: none
+
+Module Name: mod_proxy_http.c
+Content handlers: none
+Configuration Phase Participation: none
+Request Phase Participation: none
+Module Directives: none
+
+Module Name: mod_proxy_ftp.c
+Content handlers: none
+Configuration Phase Participation: none
+Request Phase Participation: none
+Module Directives: none
+
+Module Name: mod_proxy_balancer.c
+Content handlers: yes
+Configuration Phase Participation: none
+Request Phase Participation: Content Handlers
+Module Directives: none
+
+Module Name: mod_proxy.c
+Content handlers: yes
+Configuration Phase Participation: Create Directory Config, Merge Directory Configs, Create Server Config, Merge Server Configs
+Request Phase Participation: Post-Read Request, Translate Name, Map to Storage, Fixups, Content Handlers
+Module Directives:
+    <Proxy> - Container for directives affecting resources located in the proxied location
+    <ProxyMatch> - Container for directives affecting resources located in the proxied location, in regular expression syntax
+    ProxyRequests - on if the true proxy requests should be accepted
+    ProxyRemote - a scheme, partial URL or '*' and a proxy server
+    ProxyRemoteMatch - a regex pattern and a proxy server
+    ProxyPassInterpolateEnv - Interpolate Env Vars in reverse Proxy
+    ProxyPass - a virtual path and a URL
+    ProxyPassMatch - a virtual path and a URL
+    ProxyPassReverse - a virtual path and a URL for reverse proxy behaviour
+    ProxyPassReverseCookiePath - Path rewrite rule for proxying cookies
+    ProxyPassReverseCookieDomain - Domain rewrite rule for proxying cookies
+    ProxyBlock - A list of names, hosts or domains to which the proxy will not connect
+    ProxyReceiveBufferSize - Receive buffer size for outgoing HTTP and FTP connections in bytes
+    ProxyIOBufferSize - IO buffer size for outgoing HTTP and FTP connections in bytes
+    ProxyMaxForwards - The maximum number of proxies a request may be forwarded through.
+    NoProxy - A list of domains, hosts, or subnets to which the proxy will connect directly
+    ProxyDomain - The default intranet domain name (in absence of a domain in the URL)
+    AllowCONNECT - A list of ports which CONNECT may connect to
+    ProxyVia - Configure Via: proxy header header to one of: on | off | block | full
+    ProxyErrorOverride - use our error handling pages instead of the servers' we are proxying
+    ProxyPreserveHost - on if we should preserve host header while proxying
+    ProxyTimeout - Set the timeout (in seconds) for a proxied connection. This overrides the server timeout
+    ProxyBadHeader - How to handle bad header line in response: IsError | Ignore | StartBody
+    BalancerMember - A balancer name and scheme with list of params
+    ProxyStatus - Configure Status: proxy status to one of: on | off | full
+    ProxySet - A balancer or worker name with list of params
+    ProxyFtpDirCharset - Define the character set for proxied FTP listings
+Current Configuration:
+
+Module Name: mod_rewrite.c
+Content handlers: yes
+Configuration Phase Participation: Create Directory Config, Merge Directory Configs, Create Server Config, Merge Server Configs
+Request Phase Participation: Translate Name, Fixups, Content Handlers
+Module Directives:
+    RewriteEngine - On or Off to enable or disable (default) the whole rewriting engine
+    RewriteOptions - List of option strings to set
+    RewriteBase - the base URL of the per-directory context
+    RewriteCond - an input string and a to be applied regexp-pattern
+    RewriteRule - an URL-applied regexp-pattern and a substitution URL
+    RewriteMap - a mapname and a filename
+    RewriteLock - the filename of a lockfile used for inter-process synchronization
+    RewriteLog - the filename of the rewriting logfile
+    RewriteLogLevel - the level of the rewriting logfile verbosity (0=none, 1=std, .., 9=max)
+Current Configuration:
+
+Module Name: mod_substitute.c
+Content handlers: none
+Configuration Phase Participation: Create Directory Config, Merge Directory Configs
+Request Phase Participation: none
+Module Directives:
+    Substitute - Pattern to filter the response content (s/foo/bar/[inf])
+Current Configuration:
+
+Module Name: mod_alias.c
+Content handlers: none
+Configuration Phase Participation: Create Directory Config, Merge Directory Configs, Create Server Config, Merge Server Configs
+Request Phase Participation: Translate Name, Fixups
+Module Directives:
+    Alias - a fakename and a realname
+    ScriptAlias - a fakename and a realname
+    Redirect - an optional status, then document to be redirected and destination URL
+    AliasMatch - a regular expression and a filename
+    ScriptAliasMatch - a regular expression and a filename
+    RedirectMatch - an optional status, then a regular expression and destination URL
+    RedirectTemp - a document to be redirected, then the destination URL
+    RedirectPermanent - a document to be redirected, then the destination URL
+Current Configuration:
+    In file: /etc/httpd/conf/httpd.conf
+     551: Alias /icons/ "/var/www/icons/"
+     576: ScriptAlias /cgi-bin/ "/var/www/cgi-bin/"
+     855: Alias /error/ "/var/www/error/"
+
+Module Name: mod_userdir.c
+Content handlers: none
+Configuration Phase Participation: Create Server Config
+Request Phase Participation: Translate Name
+Module Directives:
+    UserDir - the public subdirectory in users' home directories, or 'disabled', or 'disabled username username...', or 'enabled username username...'
+Current Configuration:
+    In file: /etc/httpd/conf/httpd.conf
+     366: UserDir disabled
+
+Module Name: mod_speling.c
+Content handlers: none
+Configuration Phase Participation: Create Directory Config, Create Server Config
+Request Phase Participation: Fixups
+Module Directives:
+    CheckSpelling - whether or not to fix miscapitalized/misspelled requests
+    CheckCaseOnly - whether or not to fix only miscapitalized requests
+Current Configuration:
+
+Module Name: mod_actions.c
+Content handlers: yes
+Configuration Phase Participation: Create Directory Config, Merge Directory Configs
+Request Phase Participation: Content Handlers
+Module Directives:
+    Action - a media type followed by a script name
+    Script - a method followed by a script name
+Current Configuration:
+
+Module Name: mod_dir.c
+Content handlers: none
+Configuration Phase Participation: Create Directory Config, Merge Directory Configs
+Request Phase Participation: Fixups
+Module Directives:
+    DirectoryIndex - a list of file names
+    DirectorySlash - On or Off
+Current Configuration:
+    In file: /etc/httpd/conf/httpd.conf
+     402: DirectoryIndex index.html index.html.var
+
+Module Name: mod_negotiation.c
+Content handlers: yes
+Configuration Phase Participation: Create Directory Config, Merge Directory Configs
+Request Phase Participation: Check Type, Fixups, Content Handlers
+Module Directives:
+    CacheNegotiatedDocs - Either 'on' or 'off' (default)
+    LanguagePriority - space-delimited list of MIME language abbreviations
+    ForceLanguagePriority - Force LanguagePriority elections, either None, or Fallback and/or Prefer
+Current Configuration:
+    In file: /etc/httpd/conf/httpd.conf
+     743: LanguagePriority en ca cs da de el eo es et fr he hr it ja ko ltz nl nn no pl pt pt-BR ru sv zh-CN zh-TW
+     750: ForceLanguagePriority Prefer Fallback
+     859: <Directory "/var/www/error">
+     866:   LanguagePriority en es de fr
+     867:   ForceLanguagePriority Prefer Fallback
+        : </Directory>
+
+Module Name: mod_vhost_alias.c
+Content handlers: none
+Configuration Phase Participation: Create Server Config, Merge Server Configs
+Request Phase Participation: Translate Name
+Module Directives:
+    VirtualScriptAlias - how to create a ScriptAlias based on the host
+    VirtualDocumentRoot - how to create the DocumentRoot based on the host
+    VirtualScriptAliasIP - how to create a ScriptAlias based on the host
+    VirtualDocumentRootIP - how to create the DocumentRoot based on the host
+Current Configuration:
+
+Module Name: mod_dav_fs.c
+Content handlers: none
+Configuration Phase Participation: Create Server Config, Merge Server Configs
+Request Phase Participation: none
+Module Directives:
+    DAVLockDB - specify a lock database
+Current Configuration:
+    In file: /etc/httpd/conf/httpd.conf
+     565: DAVLockDB /var/lib/dav/lockdb
+
+Module Name: mod_info.c
+Content handlers: yes
+Configuration Phase Participation: Create Server Config, Merge Server Configs
+Request Phase Participation: Content Handlers
+Module Directives:
+    AddModuleInfo - a module name and additional information on that module
+Current Configuration:
+
+Module Name: mod_autoindex.c
+Content handlers: yes
+Configuration Phase Participation: Create Directory Config, Merge Directory Configs
+Request Phase Participation: Content Handlers
+Module Directives:
+    AddIcon - an icon URL followed by one or more filenames
+    AddIconByType - an icon URL followed by one or more MIME types
+    AddIconByEncoding - an icon URL followed by one or more content encodings
+    AddAlt - alternate descriptive text followed by one or more filenames
+    AddAltByType - alternate descriptive text followed by one or more MIME types
+    AddAltByEncoding - alternate descriptive text followed by one or more content encodings
+    IndexOptions - one or more index options [+|-][]
+    IndexOrderDefault - {Ascending,Descending} {Name,Size,Description,Date}
+    IndexIgnore - one or more file extensions
+    AddDescription - Descriptive text followed by one or more filenames
+    HeaderName - a filename
+    ReadmeName - a filename
+    FancyIndexing - The FancyIndexing directive is no longer supported. Use IndexOptions FancyIndexing.
+    DefaultIcon - an icon URL
+    IndexStyleSheet - URL to style sheet
+    IndexHeadInsert - String to insert in HTML HEAD section
+Current Configuration:
+    In file: /etc/httpd/conf/httpd.conf
+     604: IndexOptions FancyIndexing VersionSort NameWidth=* HTMLTable Charset=UTF-8
+     611: AddIconByEncoding (CMP,/icons/compressed.gif) x-compress x-gzip
+     613: AddIconByType (TXT,/icons/text.gif) text/*
+     614: AddIconByType (IMG,/icons/image2.gif) image/*
+     615: AddIconByType (SND,/icons/sound2.gif) audio/*
+     616: AddIconByType (VID,/icons/movie.gif) video/*
+     618: AddIcon /icons/binary.gif .bin .exe
+     619: AddIcon /icons/binhex.gif .hqx
+     620: AddIcon /icons/tar.gif .tar
+     621: AddIcon /icons/world2.gif .wrl .wrl.gz .vrml .vrm .iv
+     622: AddIcon /icons/compressed.gif .Z .z .tgz .gz .zip
+     623: AddIcon /icons/a.gif .ps .ai .eps
+     624: AddIcon /icons/layout.gif .html .shtml .htm .pdf
+     625: AddIcon /icons/text.gif .txt
+     626: AddIcon /icons/c.gif .c
+     627: AddIcon /icons/p.gif .pl .py
+     628: AddIcon /icons/f.gif .for
+     629: AddIcon /icons/dvi.gif .dvi
+     630: AddIcon /icons/uuencoded.gif .uu
+     631: AddIcon /icons/script.gif .conf .sh .shar .csh .ksh .tcl
+     632: AddIcon /icons/tex.gif .tex
+     633: AddIcon /icons/bomb.gif /core
+     635: AddIcon /icons/back.gif ..
+     636: AddIcon /icons/hand.right.gif README
+     637: AddIcon /icons/folder.gif ^^DIRECTORY^^
+     638: AddIcon /icons/blank.gif ^^BLANKICON^^
+     644: DefaultIcon /icons/unknown.gif
+     662: ReadmeName README.html
+     663: HeaderName HEADER.html
+     669: IndexIgnore .??* *~ *# HEADER* README* RCS CVS *,v *,t
+
+Module Name: mod_status.c
+Content handlers: yes
+Configuration Phase Participation: none
+Request Phase Participation: Content Handlers
+Module Directives:
+    ExtendedStatus - "On" to enable extended status information, "Off" to disable
+    SeeRequestTail - For verbose requests, "On" to see the last 63 chars of the request, "Off" (default) to see the first 63 in extended status display
+Current Configuration:
+    In file: /etc/httpd/conf.d/20_status.conf
+      19: ExtendedStatus On
+
+Module Name: mod_dav.c
+Content handlers: yes
+Configuration Phase Participation: Create Directory Config, Merge Directory Configs, Create Server Config, Merge Server Configs
+Request Phase Participation: Fixups, Content Handlers
+Module Directives:
+    DAV - specify the DAV provider for a directory or location
+    DAVMinTimeout - specify minimum allowed timeout
+    DAVDepthInfinity - allow Depth infinity PROPFIND requests
+Current Configuration:
+
+Module Name: mod_mime.c
+Content handlers: none
+Configuration Phase Participation: Create Directory Config, Merge Directory Configs
+Request Phase Participation: Check Type
+Module Directives:
+    AddCharset - a charset (e.g., iso-2022-jp), followed by one or more file extensions
+    AddEncoding - an encoding (e.g., gzip), followed by one or more file extensions
+    AddHandler - a handler name followed by one or more file extensions
+    AddInputFilter - input filter name (or ; delimited names) followed by one or more file extensions
+    AddLanguage - a language (e.g., fr), followed by one or more file extensions
+    AddOutputFilter - output filter name (or ; delimited names) followed by one or more file extensions
+    AddType - a mime type followed by one or more file extensions
+    DefaultLanguage - language to use for documents with no other language file extension
+    MultiviewsMatch - NegotiatedOnly (default), Handlers and/or Filters, or Any
+    RemoveCharset - one or more file extensions
+    RemoveEncoding - one or more file extensions
+    RemoveHandler - one or more file extensions
+    RemoveInputFilter - one or more file extensions
+    RemoveLanguage - one or more file extensions
+    RemoveOutputFilter - one or more file extensions
+    RemoveType - one or more file extensions
+    TypesConfig - the MIME types config file
+    ModMimeUsePathInfo - Set to 'yes' to allow mod_mime to use path info for type checking
+Current Configuration:
+    In file: /etc/httpd/conf/httpd.conf
+     425: TypesConfig /etc/mime.types
+     709: AddLanguage ca .ca
+     710: AddLanguage cs .cz .cs
+     711: AddLanguage da .dk
+     712: AddLanguage de .de
+     713: AddLanguage el .el
+     714: AddLanguage en .en
+     715: AddLanguage eo .eo
+     716: AddLanguage es .es
+     717: AddLanguage et .et
+     718: AddLanguage fr .fr
+     719: AddLanguage he .he
+     720: AddLanguage hr .hr
+     721: AddLanguage it .it
+     722: AddLanguage ja .ja
+     723: AddLanguage ko .ko
+     724: AddLanguage ltz .ltz
+     725: AddLanguage nl .nl
+     726: AddLanguage nn .nn
+     727: AddLanguage no .no
+     728: AddLanguage pl .po
+     729: AddLanguage pt .pt
+     730: AddLanguage pt-BR .pt-br
+     731: AddLanguage ru .ru
+     732: AddLanguage sv .sv
+     733: AddLanguage zh-CN .zh-cn
+     734: AddLanguage zh-TW .zh-tw
+     779: AddType application/x-compress .Z
+     780: AddType application/x-gzip .gz .tgz
+     785: AddType application/x-x509-ca-cert .crt
+     786: AddType application/x-pkcs7-crl .crl
+     808: AddHandler type-map var
+     816: AddType text/html .shtml
+     817: AddOutputFilter INCLUDES .shtml
+     859: <Directory "/var/www/error">
+     862:   AddOutputFilter Includes html
+     863:   AddHandler type-map var
+        : </Directory>
+
+Module Name: mod_setenvif.c
+Content handlers: none
+Configuration Phase Participation: Create Directory Config, Merge Directory Configs, Create Server Config, Merge Server Configs
+Request Phase Participation: Post-Read Request, Header Parse
+Module Directives:
+    SetEnvIf - A header-name, regex and a list of variables.
+    SetEnvIfNoCase - a header-name, regex and a list of variables.
+    BrowserMatch - A browser regex and a list of variables.
+    BrowserMatchNoCase - A browser regex and a list of variables.
+Current Configuration:
+    In file: /etc/httpd/conf.d/zzz_logformat.conf
+       9: <VirtualHost *>
+      11:   SetEnvIf Remote_Addr "127\.0\.0\.1" dontlog
+      14:   SetEnvIf Request_URI "^/$" dontlog
+        : </VirtualHost>
+    In file: /etc/httpd/conf/httpd.conf
+     895: BrowserMatch "Mozilla/2" nokeepalive
+     896: BrowserMatch "MSIE 4\.0b2;" nokeepalive downgrade-1.0 force-response-1.0
+     897: BrowserMatch "RealPlayer 4\.0" force-response-1.0
+     898: BrowserMatch "Java/1\.0" force-response-1.0
+     899: BrowserMatch "JDK/1\.0" force-response-1.0
+     908: BrowserMatch "Microsoft Data Access Internet Publishing Provider" redirect-carefully
+     909: BrowserMatch "MS FrontPage" redirect-carefully
+     910: BrowserMatch "^WebDrive" redirect-carefully
+     911: BrowserMatch "^WebDAVFS/1.[0123]" redirect-carefully
+     912: BrowserMatch "^gnome-vfs/1.0" redirect-carefully
+     913: BrowserMatch "^XML Spy" redirect-carefully
+     914: BrowserMatch "^Dreamweaver-WebDAV-SCM1" redirect-carefully
+
+Module Name: mod_usertrack.c
+Content handlers: none
+Configuration Phase Participation: Create Directory Config, Create Server Config
+Request Phase Participation: Fixups
+Module Directives:
+    CookieExpires - an expiry date code
+    CookieDomain - domain to which this cookie applies
+    CookieStyle - 'Netscape', 'Cookie' (RFC2109), or 'Cookie2' (RFC2965)
+    CookieTracking - whether or not to enable cookies
+    CookieName - name of the tracking cookie
+Current Configuration:
+
+Module Name: mod_headers.c
+Content handlers: none
+Configuration Phase Participation: Create Directory Config, Merge Directory Configs
+Request Phase Participation: Post-Read Request, Fixups, Insert Filters, Insert Errors
+Module Directives:
+    Header - an optional condition, an action, header and value followed by optional env clause
+    RequestHeader - an action, header and value followed by optional env clause
+Current Configuration:
+
+Module Name: mod_deflate.c
+Content handlers: none
+Configuration Phase Participation: Create Directory Config, Create Server Config
+Request Phase Participation: none
+Module Directives:
+    DeflateFilterNote - Set a note to report on compression ratio
+    DeflateWindowSize - Set the Deflate window size (1-15)
+    DeflateBufferSize - Set the Deflate Buffer Size
+    DeflateMemLevel - Set the Deflate Memory Level (1-9)
+    DeflateCompressionLevel - Set the Deflate Compression Level (1-9)
+    DeflateInflateLimitRequestBody - Set a limit on size of inflated input
+    DeflateInflateRatioLimit - Set the inflate ratio limit above which inflation is aborted (default: 200)
+    DeflateInflateRatioBurst - Set the maximum number of following inflate ratios above limit (default: 3)
+Current Configuration:
+
+Module Name: mod_expires.c
+Content handlers: none
+Configuration Phase Participation: Create Directory Config, Merge Directory Configs
+Request Phase Participation: Insert Filters, Insert Errors
+Module Directives:
+    ExpiresActive - Limited to 'on' or 'off'
+    ExpiresByType - a MIME type followed by an expiry date code
+    ExpiresDefault - an expiry date code
+Current Configuration:
+
+Module Name: mod_mime_magic.c
+Content handlers: none
+Configuration Phase Participation: Create Server Config, Merge Server Configs
+Request Phase Participation: Check Type
+Module Directives:
+    MimeMagicFile - Path to MIME Magic file (in file(1) format)
+Current Configuration:
+    In file: /etc/httpd/conf/httpd.conf
+     445: MIMEMagicFile conf/magic
+
+Module Name: mod_ext_filter.c
+Content handlers: none
+Configuration Phase Participation: Create Directory Config, Merge Directory Configs, Create Server Config
+Request Phase Participation: none
+Module Directives:
+    ExtFilterOptions - valid options: DebugLevel=n, LogStderr, NoLogStderr
+    ExtFilterDefine - Define an external filter
+Current Configuration:
+
+Module Name: mod_env.c
+Content handlers: none
+Configuration Phase Participation: Create Directory Config, Merge Directory Configs
+Request Phase Participation: Fixups
+Module Directives:
+    PassEnv - a list of environment variables to pass to CGI.
+    SetEnv - an environment variable name and optional value to pass to CGI.
+    UnsetEnv - a list of variables to remove from the CGI environment.
+Current Configuration:
+      24: SetEnv mapsdir /usr/local/mb_data/ibp
+
+Module Name: mod_logio.c
+Content handlers: none
+Configuration Phase Participation: none
+Request Phase Participation: Pre-Connection, Logging
+Module Directives: none
+
+Module Name: mod_log_config.c
+Content handlers: none
+Configuration Phase Participation: Create Server Config, Merge Server Configs
+Request Phase Participation: Logging
+Module Directives:
+    CustomLog - a file name, a custom log format string or format name, and an optional "env=" clause (see docs)
+    TransferLog - the filename of the access log
+    LogFormat - a log format string (see docs) and an optional format name
+    CookieLog - the filename of the cookie log
+    BufferedLogs - Enable Buffered Logging (experimental)
+Current Configuration:
+    In file: /etc/httpd/conf.d/zzz_logformat.conf
+       7: BufferedLogs On
+       9: <VirtualHost *>
+      16:   LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"" combined
+      21:   LogFormat "%h %l %u %t \"%r\" %>s %b %D \"%{Referer}i\" \"%{User-agent}i\" \"%{X-Forwarded-For}i\" %{%s}t %F \"%{X-Forwarded-Proto}i\" %{Host}i" nokia_recommended_realtime_sla
+      23:   CustomLog /var/log/httpd/access_log nokia_recommended_realtime_sla env=!dontlog
+      26:   LogFormat "\"%{%F %T}t\" \"%h\" \"%{X-Forwarded-For}i\" \"%r\"" tlv2e2eecsv
+      27:   CustomLog "|/opt/nokia/tlv2e2eecsv/Tlv2E2EeCsv.py -c /etc/tlv2e2eecsv.conf > /var/log/httpd/tlv2e2eecsv_log" tlv2e2eecsv env=!dontlog
+        : </VirtualHost>
+    In file: /etc/httpd/conf/httpd.conf
+     497: LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"" combined
+     498: LogFormat "%h %l %u %t \"%r\" %>s %b" common
+     499: LogFormat "%{Referer}i -> %U" referer
+     500: LogFormat "%{User-agent}i" agent
+     526: CustomLog logs/access_log combined
+
+Module Name: mod_include.c
+Content handlers: none
+Configuration Phase Participation: Create Directory Config, Create Server Config
+Request Phase Participation: Fixups
+Module Directives:
+    XBitHack - Off, On, or Full
+    SSIErrorMsg - a string
+    SSITimeFormat - a strftime(3) formatted string
+    SSIStartTag - SSI Start String Tag
+    SSIEndTag - SSI End String Tag
+    SSIUndefinedEcho - String to be displayed if an echoed variable is undefined
+    SSIAccessEnable - Whether testing access is enabled. Limited to 'on' or 'off'
+    SSILastModified - Whether to set the last modified header or respect an existing header. Limited to 'on' or 'off'
+    SSIEtag - Whether to allow the generation of ETags within the server. Existing ETags will be preserved. Limited to 'on' or 'off'
+Current Configuration:
+
+Module Name: mod_authnz_ldap.c
+Content handlers: none
+Configuration Phase Participation: Create Directory Config
+Request Phase Participation: Verify User Access
+Module Directives:
+    AuthLDAPURL - URL to define LDAP connection. This should be an RFC 2255 complaint URL of the form ldap://host[:port]/basedn[?attrib[?scope[?filter]]]. <ul> <li>Host is the name of the LDAP server. Use a space separated list of hosts to specify redundant servers. <li>Port is optional, and specifies the port to connect to. <li>basedn specifies the base DN to start searches from <li>Attrib specifies what attribute to search for in the directory. If not provided, it defaults to <b>uid</b>. <li>Scope is the scope of the search, and can be either <b>sub</b> or <b>one</b>. If not provided, the default is <b>sub</b>. <li>Filter is a filter to use in the search. If not provided, defaults to <b>(objectClass=*)</b>. </ul> Searches are performed using the attribute and the filter combined. For example, assume that the LDAP URL is <b>ldap://ldap.airius.com/ou=People, o=Airius?uid?sub?(posixid=*)</b>. Searches will be done using the filter <b>(&((posixid=*))(uid=<i>username</i>))</b>, where <i>username</i> is the user name passed by the HTTP client. The search will be a subtree search on the branch <b>ou=People, o=Airius</b>.
+    AuthLDAPBindDN - DN to use to bind to LDAP server. If not provided, will do an anonymous bind.
+    AuthLDAPBindPassword - Password to use to bind to LDAP server. If not provided, will do an anonymous bind.
+    AuthLDAPBindAuthoritative - Set to 'on' to return failures when user-specific bind fails - defaults to on.
+    AuthLDAPRemoteUserIsDN - Set to 'on' to set the REMOTE_USER environment variable to be the full DN of the remote user. By default, this is set to off, meaning that the REMOTE_USER variable will contain whatever value the remote user sent.
+    AuthLDAPRemoteUserAttribute - Override the user supplied username and place the contents of this attribute in the REMOTE_USER environment variable.
+    AuthzLDAPAuthoritative - Set to 'off' to allow access control to be passed along to lower modules if the UserID and/or group is not known to this module
+    AuthLDAPCompareDNOnServer - Set to 'on' to force auth_ldap to do DN compares (for the "require dn" directive) using the server, and set it 'off' to do the compares locally (at the expense of possible false matches). See the documentation for a complete description of this option.
+    AuthLDAPGroupAttribute - A list of attributes used to define group membership - defaults to member and uniquemember
+    AuthLDAPGroupAttributeIsDN - If set to 'on', auth_ldap uses the DN that is retrieved from the server forsubsequent group comparisons. If set to 'off', auth_ldap uses the stringprovided by the client directly. Defaults to 'on'.
+    AuthLDAPDynamicGroupLookup - If set to 'on', auth_ldap will look for dynamic group URI in a group DN and attempt to see if a user is part of a group defined by that URI Defaults to 'off'.
+    AuthLDAPDereferenceAliases - Determines how aliases are handled during a search. Can bo one of thevalues "never", "searching", "finding", or "always". Defaults to always.
+    AuthLDAPCharsetConfig - Character set conversion configuration file. If omitted, character setconversion is disabled.
+Current Configuration:
+
+Module Name: util_ldap.c
+Content handlers: yes
+Configuration Phase Participation: Create Server Config, Merge Server Configs
+Request Phase Participation: Content Handlers
+Module Directives:
+    LDAPSharedCacheSize - Set the size of the shared memory cache (in bytes). Use 0 to disable the shared memory cache. (default: 100000)
+    LDAPSharedCacheFile - Set the file name for the shared memory cache.
+    LDAPCacheEntries - Set the maximum number of entries that are possible in the LDAP search cache. Use 0 or -1 to disable the search cache (default: 1024)
+    LDAPCacheTTL - Set the maximum time (in seconds) that an item can be cached in the LDAP search cache. Use 0 for no limit. (default 600)
+    LDAPOpCacheEntries - Set the maximum number of entries that are possible in the LDAP compare cache. Use 0 or -1 to disable the compare cache (default: 1024)
+    LDAPOpCacheTTL - Set the maximum time (in seconds) that an item is cached in the LDAP operation cache. Use 0 for no limit. (default: 600)
+    LDAPTrustedGlobalCert - Takes three args; the file and/or directory containing the trusted CA certificates (and global client certs for Netware) used to validate the LDAP server. Second arg is the cert type for the first arg, one of CA_DER, CA_BASE64, CA_CERT7_DB, CA_SECMOD, CERT_DER, CERT_BASE64, CERT_KEY3_DB, CERT_NICKNAME, KEY_DER, or KEY_BASE64. Third arg is an optional passphrase if applicable.
+    LDAPTrustedClientCert - Takes three args; the file and/or directory containing the client certificate, or certificate ID used to validate this LDAP client. Second arg is the cert type for the first arg, one of CA_DER, CA_BASE64, CA_CERT7_DB, CA_SECMOD, CERT_DER, CERT_BASE64, CERT_KEY3_DB, CERT_NICKNAME, KEY_DER, or KEY_BASE64. Third arg is an optional passphrase if applicable.
+    LDAPTrustedMode - Specify the type of security that should be applied to an LDAP connection. One of; NONE, SSL or STARTTLS.
+    LDAPVerifyServerCert - Set to 'ON' requires that the server certificate be verified before a secure LDAP connection can be establish. Default 'ON'
+    LDAPConnectionTimeout - Specify the LDAP socket connection timeout in seconds (default: 10)
+    LDAPChaseReferrals - Set to 'ON' requires that LDAP referrals are searched. Default 'ON'
+    LDAPReferrals - Set to 'ON' requires that LDAP referrals are searched. Default 'ON'
+Current Configuration:
+
+Module Name: mod_authz_default.c
+Content handlers: none
+Configuration Phase Participation: Create Directory Config
+Request Phase Participation: Verify User Access
+Module Directives:
+    AuthzDefaultAuthoritative - Set to 'Off' to allow access control to be passed along to lower modules. (default is On.)
+Current Configuration:
+
+Module Name: mod_authz_dbm.c
+Content handlers: none
+Configuration Phase Participation: Create Directory Config
+Request Phase Participation: Verify User Access
+Module Directives:
+    AuthDBMGroupFile - database file containing group names and member user IDs
+    AuthzDBMType - what type of DBM file the group file is
+    AuthzDBMAuthoritative - Set to 'Off' to allow access control to be passed along to lower modules, if the group required is not found or empty, or the user is not in the required groups. (default is On.)
+Current Configuration:
+
+Module Name: mod_authz_groupfile.c
+Content handlers: none
+Configuration Phase Participation: Create Directory Config
+Request Phase Participation: Verify User Access
+Module Directives:
+    AuthGroupFile - text file containing group names and member user IDs
+    AuthzGroupFileAuthoritative - Set to 'Off' to allow access control to be passed along to lower modules if the 'require group' fails. (default is On).
+Current Configuration:
+
+Module Name: mod_authz_owner.c
+Content handlers: none
+Configuration Phase Participation: Create Directory Config
+Request Phase Participation: Verify User Access
+Module Directives:
+    AuthzOwnerAuthoritative - Set to 'Off' to allow access control to be passed along to lower modules. (default is On.)
+Current Configuration:
+
+Module Name: mod_authz_user.c
+Content handlers: none
+Configuration Phase Participation: Create Directory Config
+Request Phase Participation: Verify User Access
+Module Directives:
+    AuthzUserAuthoritative - Set to 'Off' to allow access control to be passed along to lower modules if the 'require user' or 'require valid-user' statement is not met. (default: On).
+Current Configuration:
+
+Module Name: mod_authz_host.c
+Content handlers: none
+Configuration Phase Participation: Create Directory Config
+Request Phase Participation: Check Access
+Module Directives:
+    order - 'allow,deny', 'deny,allow', or 'mutual-failure'
+    allow - 'from' followed by hostnames or IP-address wildcards
+    deny - 'from' followed by hostnames or IP-address wildcards
+Current Configuration:
+    In file: /etc/httpd/conf.d/20_status.conf
+       5: <Location /server-status>
+       7:   Order Deny,Allow
+       8:   Deny from all
+       9:   Allow from 127.0.0.1
+        : </Location>
+      12: <Location /server-info>
+      14:   Order Deny,Allow
+      15:   Deny from all
+      16:   Allow from 127.0.0.1
+        : </Location>
+      10:   <LimitExcept GET POST HEAD>
+      11:     Deny from all
+        :   </LimitExcept>
+        : </Directory>
+    In file: /etc/httpd/conf/httpd.conf
+     317: <Directory "/var/www/html">
+     343:   Order allow,deny
+     344:   Allow from all
+        : </Directory>
+     415: <Files ~ "^\.ht">
+     416:   Order allow,deny
+     417:   Deny from all
+        : </Files>
+     553: <Directory "/var/www/icons">
+     556:   Order allow,deny
+     557:   Allow from all
+        : </Directory>
+     582: <Directory "/var/www/cgi-bin">
+     585:   Order allow,deny
+     586:   Allow from all
+        : </Directory>
+     859: <Directory "/var/www/error">
+     864:   Order allow,deny
+     865:   Allow from all
+        : </Directory>
+
+Module Name: mod_authn_default.c
+Content handlers: none
+Configuration Phase Participation: Create Directory Config
+Request Phase Participation: Verify User ID
+Module Directives:
+    AuthDefaultAuthoritative - Set to 'Off' to allow access control to be passed along to lower modules if the UserID is not known to this module. (default is On).
+Current Configuration:
+
+Module Name: mod_authn_dbm.c
+Content handlers: none
+Configuration Phase Participation: Create Directory Config
+Request Phase Participation: none
+Module Directives:
+    AuthDBMUserFile - dbm database file containing user IDs and passwords
+    AuthDBMType - what type of DBM file the user file is
+Current Configuration:
+
+Module Name: mod_authn_anon.c
+Content handlers: none
+Configuration Phase Participation: Create Directory Config
+Request Phase Participation: none
+Module Directives:
+    Anonymous - a space-separated list of user IDs
+    Anonymous_MustGiveEmail - Limited to 'on' or 'off'
+    Anonymous_NoUserId - Limited to 'on' or 'off'
+    Anonymous_VerifyEmail - Limited to 'on' or 'off'
+    Anonymous_LogEmail - Limited to 'on' or 'off'
+Current Configuration:
+
+Module Name: mod_authn_alias.c
+Content handlers: none
+Configuration Phase Participation: Create Server Config
+Request Phase Participation: none
+Module Directives:
+    <AuthnProviderAlias> - Container for authentication directives grouped under a provider alias
+Current Configuration:
+
+Module Name: mod_authn_file.c
+Content handlers: none
+Configuration Phase Participation: Create Directory Config
+Request Phase Participation: none
+Module Directives:
+    AuthUserFile - text file containing user IDs and passwords
+Current Configuration:
+
+Module Name: mod_auth_digest.c
+Content handlers: none
+Configuration Phase Participation: Create Directory Config
+Request Phase Participation: Post-Read Request, Verify User ID, Fixups
+Module Directives:
+    AuthName - The authentication realm (e.g. "Members Only")
+    AuthDigestProvider - specify the auth providers for a directory or location
+    AuthDigestQop - A list of quality-of-protection options
+    AuthDigestNonceLifetime - Maximum lifetime of the server nonce (seconds)
+    AuthDigestNonceFormat - The format to use when generating the server nonce
+    AuthDigestNcCheck - Whether or not to check the nonce-count sent by the client
+    AuthDigestAlgorithm - The algorithm used for the hash calculation
+    AuthDigestDomain - A list of URI's which belong to the same protection space as the current URI
+    AuthDigestShmemSize - The amount of shared memory to allocate for keeping track of clients
+Current Configuration:
+
+Module Name: mod_auth_basic.c
+Content handlers: none
+Configuration Phase Participation: Create Directory Config
+Request Phase Participation: Verify User ID
+Module Directives:
+    AuthBasicProvider - specify the auth providers for a directory or location
+    AuthBasicAuthoritative - Set to 'Off' to allow access control to be passed along to lower modules if the UserID is not known to this module
+Current Configuration:
+
+Module Name: mod_so.c
+Content handlers: none
+Configuration Phase Participation: Create Server Config
+Request Phase Participation: none
+Module Directives:
+    LoadModule - a module name and the name of a shared object file to load it from
+    LoadFile - shared object file or library to load into the server at runtime
+Current Configuration:
+
+Module Name: http_core.c
+Content handlers: none
+Configuration Phase Participation: none
+Request Phase Participation: Process Connection, Create Request, HTTP Scheme, Default Port, Map to Storage
+Module Directives:
+    KeepAliveTimeout - Keep-Alive timeout duration (sec)
+    MaxKeepAliveRequests - Maximum number of Keep-Alive requests per connection, or 0 for infinite
+    KeepAlive - Whether persistent connections should be On or Off
+Current Configuration:
+    In file: /etc/httpd/conf/httpd.conf
+      76: KeepAlive Off
+      83: MaxKeepAliveRequests 100
+      89: KeepAliveTimeout 15
+    In file: /etc/httpd/conf.d/01_default_security.conf
+      14: MaxKeepAliveRequests 100
+      18: KeepAliveTimeout 15
+
+Module Name: prefork.c
+Content handlers: none
+Configuration Phase Participation: none
+Request Phase Participation: none
+Module Directives:
+    User - Effective user id for this server
+    Group - Effective group id for this server
+    ChrootDir - The directory to chroot(2) into
+    ListenBacklog - Maximum length of the queue of pending connections, as used by listen(2)
+    Listen - A port number or a numeric IP address and a port number, and an optional protocol
+    SendBufferSize - Send buffer size in bytes
+    ReceiveBufferSize - Receive buffer size in bytes
+    StartServers - Number of child processes launched at server startup
+    MinSpareServers - Minimum number of idle children, to handle request spikes
+    MaxSpareServers - Maximum number of idle children
+    MaxClients - Maximum number of children alive at the same time
+    ServerLimit - Maximum value of MaxClients for this run of Apache
+    GracefulShutdownTimeout - Maximum time in seconds to wait for child processes to complete transactions during shutdown
+Current Configuration:
+    In file: /etc/httpd/conf/httpd.conf
+     103: StartServers 8
+     104: MinSpareServers 5
+     105: MaxSpareServers 20
+     106: ServerLimit 256
+     107: MaxClients 256
+     136: Listen 80
+    In file: /etc/httpd/conf.d/10_prefork.conf
+       2: StartServers 50
+       3: MinSpareServers 5
+       4: MaxSpareServers 5
+       5: ServerLimit 50
+       6: MaxClients 50
+       8: ListenBacklog 60000
+    In file: /etc/httpd/conf/httpd.conf
+     242: User apache
+     243: Group apache 
